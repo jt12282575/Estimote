@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="planets_array">
+        <item>鑰匙在哪</item>
+        <item>問卷測驗</item>
+        <item>個人資料</item>
+        <item>設定</item>
+    </string-array>
+    <string-array name="question_array">
+        <item>上次看到鑰匙在哪裡？</item>
+        <item>你的名字叫什麼？</item>
+        <item>你知道你的鑰匙在哪裡嗎？</item>
+        <item>今天是幾月幾日？</item>
+        <item>最後去的地方？</item>
+        <item>今天是星期幾？</item>
+        <item>您幾歲了？</item>
+        <item>您的手機號碼是幾號？</item>
+        <item>您的出生年月日？</item>
+        <item>前任總統是誰？</item>
+        <item>現任總統是誰？</item>
+        <item>選出一位女性的名字？</item>
+        <item>20 減 3 等於多少？</item>
+        <item>20 減 3 再減 3 等於多少？</item>
+    </string-array>
+</resources>

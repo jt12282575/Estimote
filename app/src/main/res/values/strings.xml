@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Estimote</string>
+    <string name="hello">hello_world</string>
+    <string name="phonenumreg">用手機號碼註冊帳號</string>
+    <string name="passwordreg">密碼</string>
+    <string name="namereg">姓名</string>
+    <string name="birthreg">生日</string>
+    <string name="sendreg">註冊新帳號</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="login_id">帳號</string>
+    <string name="login_pass">密碼</string>
+    <string name="login">登錄</string>
+    <string name="drawer_open">打開</string>
+    <string name="drawer_close">關閉</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
