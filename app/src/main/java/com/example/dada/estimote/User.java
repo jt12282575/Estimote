@@ -1,5 +1,7 @@
 package com.example.dada.estimote;
 
+import java.util.Map;
+
 /**
  * Created by dada on 2017/8/21.
  */
@@ -9,6 +11,7 @@ class User {
     public String password;
     public String name;
     public String birthday;
+    public Map<String,String> map;
 
     public User(){
 
@@ -34,5 +37,6 @@ class User {
     public void setId(String id) {
         this.id = id;
     }
+
 
 }

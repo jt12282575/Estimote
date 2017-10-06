@@ -5,12 +5,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.estimote.coresdk.cloud.api.CloudCallback;
+import com.estimote.coresdk.cloud.api.EstimoteCloud;
+import com.estimote.coresdk.cloud.model.BeaconInfo;
+import com.estimote.coresdk.common.config.EstimoteSDK;
+import com.estimote.coresdk.common.exception.EstimoteCloudException;
 import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 import com.estimote.coresdk.observation.region.beacon.BeaconRegion;
 import com.estimote.coresdk.recognition.packets.Beacon;
@@ -34,8 +40,10 @@ public class ConnectDevice extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_connect_device);
         globalVariable = (GlobalVariable)ConnectDevice.this.getApplicationContext();
+        EstimoteSDK.initialize(this,"anti-loss-azv","d43f9b192d3dba4ea9030e70e65c1987");
         cdlv = (ListView) findViewById(R.id.cdlv);
         cdbtnskip = (Button)findViewById(R.id.cdbtnskip);
 
@@ -59,7 +67,17 @@ public class ConnectDevice extends AppCompatActivity {
                 for (Beacon beacon : list) {
 //                    distance = Math.pow(10, (beacon.getMeasuredPower() - beacon.getRssi()) / 20.0);// 20 from 10 * n ,
                     // n is usually 2 - 2.5;
+                    EstimoteCloud.getInstance().fetchBeaconDetails(beacon.getProximityUUID(),beacon.getMajor(),beacon.getMinor(), new CloudCallback<BeaconInfo>() {
+                        @Override
+                        public void success(BeaconInfo beaconInfo) {
+                            Log.i("ok", String.valueOf(beaconInfo.name));
+                        }
 
+                        @Override
+                        public void failure(EstimoteCloudException e) {
+                            Log.i("ok", "BEACON INFO ERROR: " + e);
+                        }
+                    });
                         HashMap<String, Object> map = new HashMap<String, Object>();
                         map.put("Major", beacon.getMajor());
                         map.put("Minor", beacon.getMinor());

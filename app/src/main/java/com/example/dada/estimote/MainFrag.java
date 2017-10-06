@@ -5,9 +5,11 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +23,14 @@ public class MainFrag extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main_frag);
         pageList = new ArrayList<>();
         pageList.add(new Q1(MainFrag.this));
         pageList.add(new Q2(MainFrag.this));
+        pageList.add(new Q3(MainFrag.this));
+        pageList.add(new Q4(MainFrag.this));
+        pageList.add(new Q5(MainFrag.this));
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(new SamplePagerAdapter());
 
@@ -54,4 +60,13 @@ public class MainFrag extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    protected void onPause() {
+        Log.i("ok","onPause");
+
+        super.onPause();
+    }
+
+
 }

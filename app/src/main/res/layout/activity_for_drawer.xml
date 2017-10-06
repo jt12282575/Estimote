@@ -11,14 +11,20 @@
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
     </FrameLayout>
     <!-- The navigation drawer -->
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@mipmap/bg3_1712"
+        android:scaleType="fitXY"
+        android:theme="@style/NavigationTheme"
         app:headerLayout="@layout/drawer_header"
-        app:menu="@menu/drawer" />
+        app:menu="@menu/drawer"
+        app:itemBackground="@mipmap/dwbtn11"
+
+        />
 </android.support.v4.widget.DrawerLayout>

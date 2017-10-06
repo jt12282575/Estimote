@@ -21,9 +21,8 @@ import android.widget.TextView;
 public class Q1 extends PageView{
     public Q1(Context context) {
         super(context);
-        View view = LayoutInflater.from(context).inflate(R.layout.fragment_q1, null);
-        TextView textView = (TextView) view.findViewById(R.id.text_1);
-        textView.setText("Page one");
+        View view = LayoutInflater.from(context).inflate(R.layout.fragment_q2, null);
+
         addView(view);
     }
 

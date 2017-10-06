@@ -3,25 +3,25 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/navigation_item_1"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/dwlogo111"
             android:title="個人資料"/>
         <item
             android:id="@+id/navigation_item_2"
             android:checked="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/dwlogo222"
             android:title="鑰匙在哪"/>
         <item
             android:id="@+id/navigation_item_3"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/dwlogo333"
             android:title="問卷測驗"/>
         <item
             android:id="@+id/navigation_item_4"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/dwlogo444"
             android:title="設定"/>
         <item
             android:id="@+id/navigation_item_5"
             android:checked="true"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@mipmap/dwlogo555"
             android:title="登出"/>
     </group>
 </menu>

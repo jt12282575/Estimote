@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Estimote</string>
+    <string name="app_name">找東西找健康</string>
     <string name="hello">hello_world</string>
     <string name="phonenumreg">用手機號碼註冊帳號</string>
     <string name="passwordreg">密碼</string>

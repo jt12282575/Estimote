@@ -4,6 +4,7 @@
     android:id="@+id/activity_elderclock"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg22"
     tools:context="com.example.dada.estimote.Elderclock">
     <include layout="@layout/toolbar"
         android:layout_width="match_parent"
@@ -16,8 +17,11 @@
         android:gravity="center">
         <Button
             android:id="@+id/btn_set"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="260dp"
+            android:layout_height="65dp"
+            android:textColor="#482d1a"
+            android:textSize="20sp"
+            android:background="@mipmap/btn_1_0733"
             android:text="設置鬧鐘" />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -26,10 +30,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#7f4f21"
+                android:textSize="20sp"
                 android:text=" 鬧鐘時間："/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:id="@+id/tvclock" />
         </LinearLayout>
 
@@ -42,12 +49,17 @@
             android:visibility="gone" />
         <Button
             android:id="@+id/btn_setconnect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="260dp"
+            android:layout_height="65dp"
+            android:textColor="#482d1a"
+            android:textSize="20sp"
+            android:background="@mipmap/btn_1_0733"
             android:text="更改連結" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#7f4f21"
+            android:textSize="20sp"
             android:text="目前裝置"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -56,10 +68,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#7f4f21"
+                android:textSize="20sp"
                 android:text=" Major: ："/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:id="@+id/tvdevmajor" />
         </LinearLayout>
         <LinearLayout
@@ -69,10 +84,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#7f4f21"
+                android:textSize="20sp"
                 android:text=" Minor: ："/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:id="@+id/tvdevminor" />
         </LinearLayout>
 

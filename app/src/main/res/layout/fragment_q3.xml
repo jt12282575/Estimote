@@ -3,73 +3,110 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg11"
-    tools:context="com.example.dada.estimote.Q2">
+    tools:context="com.example.dada.estimote.Q3">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="9"
+            android:orientation="vertical"
             android:gravity="center"
-            android:orientation="vertical">
-
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
-
+                android:layout_height="100dp" />
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/logo1_152" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/logofind3" />
-
+                android:src="@mipmap/logo1_152"/>
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
+                android:layout_height="20dp" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@mipmap/arrow1" />
-
+                android:orientation="vertical"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="30dp"
+                android:background="@mipmap/dis_alert23">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="向左滑開始"
+                    android:text="藍芽"
                     android:textColor="#000000"
-                    android:textSize="18sp" />
+                    android:textSize="20sp"
+                    android:id="@+id/frag3_tv1"/>
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="您的裝置目前將可被附近的裝置搜尋"
+                    android:textColor="#595757"
+                    android:textSize="18sp"
+                    android:id="@+id/frag3_tv2"/>
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+                <View
+                    android:layout_height="2px" android:background="#6D6968"
+                    android:layout_width="match_parent">
+                </View>
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="可用裝置"
+                    android:textColor="#595757"
+                    android:textSize="18sp"
+                    android:id="@+id/frag3_tv3"/>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_height="80dp">
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/frag3_lv1"></ListView>
+                </ScrollView>
+
             </LinearLayout>
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_marginBottom="40dp"
                 android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/lcircle" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/lcircle" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -85,18 +122,10 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@mipmap/lcircle" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/lcircle" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/lcircle" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+
 
 </RelativeLayout>

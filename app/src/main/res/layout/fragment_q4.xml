@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg11"
-    tools:context="com.example.dada.estimote.Q1">
+    tools:context="com.example.dada.estimote.Q4">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -15,7 +15,9 @@
             android:layout_height="0dp"
             android:layout_weight="9"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp">
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="100dp" />
@@ -25,42 +27,80 @@
                 android:src="@mipmap/logo1_152"/>
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="30dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/frag4_tv1"
+                android:text="設定提醒時間"
                 android:textColor="#40220F"
-                android:textSize="20sp"
-                android:text="與鑰匙圈連結"
-                android:id="@+id/frag2_tv1"/>
+                android:textSize="24sp"/>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/frag4_tv2"
+                android:text="定時回想鑰匙在哪"
                 android:textColor="#312F2F"
-                android:textSize="18sp"
-                android:text="跟購買的產品做連接"
-                android:id="@+id/frag2_tv2"/>
+                android:textSize="18sp"/>
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="30dp" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/frag_btn1"
-                android:textSize="18sp"
-                android:textColor="#312F2F"
-                android:background="@mipmap/dwbtn4"
-                android:text="綁定鑰匙圈"/>
+            <View
+                android:layout_height="2px" android:background="#6D6968"
+                android:layout_width="match_parent">
+            </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/frag4_tv3"
+                    android:text="20:00"
+                    android:textColor="#000000"
+                    android:textSize="24sp"/>
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="每日"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+                <Space
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent" />
+                <ToggleButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/MySwitch"
+                    android:checked="false"
+                    android:id="@+id/frag4_tgb1"
+                    android:textOff="@null"
+                    android:textOn="@null"
+                    android:background="#00000000"
+                    />
+
+
+            </LinearLayout>
+            <View
+                android:layout_height="2px" android:background="#6D6968"
+                android:layout_width="match_parent">
+            </View>
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#312F2F"
-                android:textSize="18sp"
-                android:text="將您的鑰匙和手機做連結！"
-                android:id="@+id/frag2_tv3"/>
+                android:layout_height="60dp" />
+
 
 
         </LinearLayout>
@@ -85,17 +125,17 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:src="@mipmap/lcircle" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/lcircle" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@mipmap/lcirclefull" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/lcircle" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/lcircle" />
 
                 <ImageView
                     android:layout_width="20dp"

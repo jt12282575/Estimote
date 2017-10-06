@@ -1,27 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg22"
     tools:context="com.example.dada.estimote.MainActivity">
-            <include layout="@layout/toolbar"
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ques_iv1"
+            android:src="@mipmap/logo1_15" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/dis_alert23"
+            android:visibility="gone"
+            android:id="@+id/dis_ll1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="40dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/maintv1"/>
+                android:id="@+id/dis_tv2"
+                android:textColor="#E60012"
+                android:textSize="30sp"
+                android:text="注意"/>
+            <View
+                android:layout_height="2px" android:background="#6D6968"
+                android:layout_marginRight="45dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/dis_view1"
+                android:layout_width="match_parent">
+            </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:id="@+id/dis_ll2">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="80dp"
+                        android:id="@+id/dis_iv2"
+                        android:src="@mipmap/key"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/dis_tv3"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="#E60012"
+                        android:textSize="18sp"
+                        android:text="gotkey"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_height="2px" android:background="#6D6968"
+                android:layout_marginRight="45dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/dis_view2"
+                android:layout_width="match_parent">
+            </View>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/maintv2"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_below="@+id/maintv1"
-                android:layout_centerInParent="true"
-                android:text="底下"/>
+                android:id="@+id/dis_tv4"
+                android:layout_marginTop="20dp"
+                android:textColor="#6D6968"
+                android:textSize="20sp"
+                android:text="連線斷開，是否丟失？"/>
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:id="@+id/dis_btn1"
+                android:textColor="#40220f"
+                android:textSize="18sp"
+                android:layout_marginTop="10dp"
+                android:background="@mipmap/btn_1_0733" />
 
-</RelativeLayout>
+        </LinearLayout>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/dis1_102"
+            android:id="@+id/dis_ib1"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dis_iv1"
+            android:background="@mipmap/dis1_112"
+            android:visibility="gone"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dis_tv1" />
+        <ImageButton
+            android:layout_width="200dp"
+            android:layout_height="75dp"
+            android:background="@mipmap/dis_btn1_1612"
+            android:id="@+id/dis_ib2"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+
+</LinearLayout>

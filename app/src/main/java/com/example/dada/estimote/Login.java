@@ -3,23 +3,29 @@ package com.example.dada.estimote;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.graphics.Paint;
 
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,12 +41,12 @@ import com.firebase.client.ValueEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Login extends ForDrawer {
+public class Login extends AppCompatActivity {
     private EditText edid;
     private EditText edpass;
     private Button btnlogin;
     private GlobalVariable globalVariable;
-    private Button btnreg;
+    private ProgressDialog psDialog;
     private SharedPreferences settings;
 
 
@@ -49,22 +55,30 @@ public class Login extends ForDrawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        /*toolbar.setTitle("登入");
-        setUpToolBar();
-        CurrentMenuItem = 0;//目前Navigation項目位置
-        NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態*/
+
 
         globalVariable = (GlobalVariable)Login.this.getApplicationContext();
 
         /*getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);*/
+
+        Toolbar mytoolbar = (Toolbar)findViewById(R.id.ToolBar);
+        setSupportActionBar(mytoolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+        }
+        actionBar.setTitle("登入");
+
+
         settings = getSharedPreferences("Est", 0);
-
-
         String name = settings.getString("once", "");
-        if(name.equals("")) {
+        /*if(name.equals("")) {
             Intent intent = new Intent();
             intent.setClass(Login.this, PersonInfo.class);
             startActivity(intent);
@@ -76,29 +90,36 @@ public class Login extends ForDrawer {
             globalVariable.minor = settings.getInt("minor",-1);
         }
         else{
-            /*Intent intentgoto = new Intent(Login.this,Lobby.class);
-            intentgoto.putExtra("id", name);
-            startActivity(intentgoto);
-            onDestroy();*/
+//            Intent intentgoto = new Intent(Login.this,Lobby.class);
+//            intentgoto.putExtra("id", name);
+//            startActivity(intentgoto);
+//            onDestroy();
 
-        }
+        }*/
 
 
         Firebase.setAndroidContext(this);
         edid = (EditText) findViewById(R.id.login_ed_id);
         edpass = (EditText) findViewById(R.id.login_ed_pass);
         btnlogin = (Button) findViewById(R.id.btnlogin);
-        btnreg = (Button) findViewById(R.id.btnreg);
         edid.requestFocus();
 
+        AssetManager mgr = getAssets();
+        //根据路径得到Typeface
+        Typeface tf = Typeface.createFromAsset(mgr, "font/msjhbd.ttc");
+        //设置字体
+        btnlogin.setTypeface(tf);
 
-        edid.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//设置下滑线属性
-        edpass.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//设置下滑线属性
+//        edid.setSelection(10);
+//        edpass.setSelection(10);
+//        edid.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//设置下滑线属性
+//        edpass.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);//设置下滑线属性
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!edid.getText().toString().equals("") && !edpass.getText().toString().equals("")) {
+                    psDialog = ProgressDialog.show(Login.this, "訊息", "資料載入中，請稍候...");
                     myFirebaseRef = new Firebase(url);
                     Query query = myFirebaseRef.orderByChild("name").equalTo("Vivi");
                     DatabaseReference retrieveData = FirebaseDatabase.getInstance().getReference("Vivi");
@@ -119,6 +140,7 @@ public class Login extends ForDrawer {
 
                                 }*/
                                 User user = snapshot.getValue(User.class);
+
                                 Log.i("ok", "name = " + user.getName() + " , birthday = " + user.getBirthday());
 
                                 if (edpass.getText().toString().equals(user.getPassword())) {
@@ -128,18 +150,21 @@ public class Login extends ForDrawer {
                                     globalVariable.major = -1;
                                     globalVariable.minor = -1;
                                     settings.edit().putString("id",edid.getText().toString()).putString("name",user.getName()).putString("birthday",user.getBirthday()).putString("once","").putInt("major",-1).putInt("minor",-1).commit();
+                                    psDialog.dismiss();
                                     Toast.makeText(Login.this,"登入成功",Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent();
                                     intent.setClass(Login.this, MainFrag.class);
                                     startActivity(intent);
                                     finish();
                                 }else{
+                                    psDialog.dismiss();
                                     edpass.requestFocus();
                                     edpass.setText("");
                                     showDia();
                                 }
 
                             }else{
+                                psDialog.dismiss();
                                 Log.i("ok","no this user");
                                 edpass.setText("");
                                 showDia();
@@ -153,9 +178,9 @@ public class Login extends ForDrawer {
                         }
                     });
                 } else {
-                    new AlertDialog.Builder(Login.this)
+                    new AlertDialog.Builder(Login.this,R.style.AlertDialogCustom)
                             .setTitle("提醒")//設定視窗標題
-                            .setIcon(R.mipmap.ic_launcher)//設定對話視窗圖示
+                            .setIcon(R.mipmap.startlogo2)//設定對話視窗圖示
                             .setMessage("帳號或是密碼不可空白")//設定顯示的文字
                             .setPositiveButton("確定",new DialogInterface.OnClickListener(){
                                 @Override
@@ -169,15 +194,7 @@ public class Login extends ForDrawer {
                 }
             }
         });
-        btnreg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(Login.this, Forfirebase.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
 
 
@@ -192,9 +209,9 @@ public class Login extends ForDrawer {
         return true;
     }*/
     private void showDia(){
-        new AlertDialog.Builder(Login.this)
+        new AlertDialog.Builder(Login.this,R.style.AlertDialogCustom)
                 .setTitle("提醒")//設定視窗標題
-                .setIcon(R.mipmap.ic_launcher)//設定對話視窗圖示
+                .setIcon(R.mipmap.startlogo2)//設定對話視窗圖示
                 .setMessage("帳號或是密碼錯誤")//設定顯示的文字
                 .setPositiveButton("確定",new DialogInterface.OnClickListener(){
                     @Override
@@ -205,6 +222,15 @@ public class Login extends ForDrawer {
                 .show();//呈現對話視窗
 
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
     }
 
 

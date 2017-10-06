@@ -5,11 +5,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -20,6 +24,7 @@ public class Question extends ForDrawer {
     private Button btn1;
     private Button btn2;
     private Button btn3;
+    private ImageView iv1;
     private Resources res;
     private int ques_num;
     private int[] ans;
@@ -31,13 +36,17 @@ public class Question extends ForDrawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_question);
         globalVariable = (GlobalVariable)Question.this.getApplicationContext();
         toolbar.setTitle("問卷測驗");
         setUpToolBar();
         CurrentMenuItem = 2;//目前Navigation項目位置
-        NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
-
+//        NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
+        int size = NV.getMenu().size();
+        for (int i = 0; i < size; i++) {
+            NV.getMenu().getItem(i).setChecked(false);
+        }
         settings = getSharedPreferences("Est", 0);
         String name = settings.getString("once", "");
         if(name.equals("")) {
@@ -113,6 +122,7 @@ public class Question extends ForDrawer {
         btn1 = (Button) findViewById(R.id.ques_btn1);
         btn2 = (Button) findViewById(R.id.ques_btn2);
         btn3 = (Button) findViewById(R.id.ques_btn3);
+        iv1 = (ImageView) findViewById(R.id.ques_iv1);
         testscore = (TextView)findViewById(R.id.testscore);
         res = getResources();
 
@@ -228,9 +238,9 @@ public class Question extends ForDrawer {
                 break;
             case 14:
                 if(choose!=1) score++;
-                new AlertDialog.Builder(Question.this)
+                new AlertDialog.Builder(Question.this,R.style.AlertDialogCustom)
                         .setTitle("得分")//設定視窗標題
-                        .setIcon(R.mipmap.ic_launcher)//設定對話視窗圖示
+                        .setIcon(R.mipmap.startlogo2)//設定對話視窗圖示
                         .setMessage("得到的分數是 "+Integer.toString(score)+" 分\n接著去找鑰匙摟")//設定顯示的文字
                         .setPositiveButton("確定",new DialogInterface.OnClickListener(){
                             @Override
@@ -239,6 +249,10 @@ public class Question extends ForDrawer {
                                 intent5.setClass(Question.this, MainActivity.class);
                                 startActivity(intent5);
                                 overridePendingTransition(0, 0);
+                                recycleBackgroundBitMap(btn1);
+                                recycleBackgroundBitMap(btn2);
+                                recycleBackgroundBitMap(btn3);
+                                recycleImageViewBitMap(iv1);
                                 finish();
 
                             }
@@ -275,9 +289,32 @@ public class Question extends ForDrawer {
 
         return chinweekday;
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.drawer, menu);
-        return true;
+
+    public static void recycleBackgroundBitMap(Button view) {
+        if (view != null) {
+            BitmapDrawable bd = (BitmapDrawable) view.getBackground();
+            rceycleBitmapDrawable(bd);
+        }
     }
+    public static void recycleImageViewBitMap(ImageView imageView) {
+        if (imageView != null) {
+            BitmapDrawable bd = (BitmapDrawable) imageView.getDrawable();
+            rceycleBitmapDrawable(bd);
+        }
+    }
+    private static void rceycleBitmapDrawable(BitmapDrawable bitmapDrawable) {
+        if (bitmapDrawable != null) {
+            Bitmap bitmap = bitmapDrawable.getBitmap();
+            rceycleBitmap(bitmap);
+        }
+        bitmapDrawable = null;
+    }
+    private static void rceycleBitmap(Bitmap bitmap) {
+        if (bitmap != null && !bitmap.isRecycled()) {
+            bitmap.recycle();
+            bitmap = null;
+        }
+    }
+
+
 }

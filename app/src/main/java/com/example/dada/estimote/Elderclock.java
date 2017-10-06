@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -30,16 +31,31 @@ public class Elderclock extends ForDrawer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_elderclock);
         globalVariable = (GlobalVariable)Elderclock.this.getApplicationContext();
         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         toolbar.setTitle("設定");
         setUpToolBar();
         CurrentMenuItem = 3;//目前Navigation項目位置
-        NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
+//        NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
+        int size = NV.getMenu().size();
+        for (int i = 0; i < size; i++) {
+            NV.getMenu().getItem(i).setChecked(false);
+        }
         bindview();
         tvmajor.setText(Integer.toString(globalVariable.major));
         tvminor.setText(Integer.toString(globalVariable.minor));
+        btnsetconnect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Elderclock.this, ConnectDevice.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         btn_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +89,7 @@ public class Elderclock extends ForDrawer {
             @Override
             public void onClick(View v) {
                 alarmManager.cancel(pi);
-                btn_cancel.setVisibility(View.GONE);
+                btn_cancel.setVisibility(View.GONfE);
                 Toast.makeText(Elderclock.this, "闹钟已取消", Toast.LENGTH_SHORT)
                         .show();
             }
@@ -86,6 +102,7 @@ public class Elderclock extends ForDrawer {
 
         btn_set = (Button) findViewById(R.id.btn_set);
         btn_cancel = (Button) findViewById(R.id.btn_cancel);
+        btnsetconnect = (Button)findViewById(R.id.btn_setconnect);
         tvclock = (TextView) findViewById(R.id.tvclock);
         tvmajor = (TextView) findViewById(R.id.tvdevmajor);
         tvminor = (TextView) findViewById(R.id.tvdevminor);
@@ -94,9 +111,7 @@ public class Elderclock extends ForDrawer {
         Intent intent = new Intent(Elderclock.this, ClockActivity.class);
         pi = PendingIntent.getActivity(Elderclock.this, 0, intent, 0);
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.drawer, menu);
-        return true;
-    }
+
+
+
 }

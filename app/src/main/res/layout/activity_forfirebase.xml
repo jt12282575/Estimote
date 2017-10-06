@@ -4,150 +4,144 @@
     android:id="@+id/activity_forfirebase"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg22"
     tools:context="com.example.dada.estimote.Forfirebase">
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <LinearLayout
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+
+
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
-        </LinearLayout>
+            android:layout_height="65dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_tvacc"
+            android:textSize="16sp"
+            android:text="@string/phonenumreg" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <EditText
+            android:id="@+id/regedid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@mipmap/edbg"
+            android:textColor="#7f4f21"
+            android:maxLength="10"
+            android:paddingLeft="20dp"
+            android:hint="請輸入電話號碼"
+            android:inputType="phone" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_tvpass"
+            android:textSize="16sp"
+            android:text="@string/passwordreg" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <EditText
+            android:id="@+id/regedpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@mipmap/edbg"
+            android:textColor="#7f4f21"
+            android:maxLength="16"
+            android:paddingLeft="20dp"
+            android:hint="請輸入密碼"
+            android:inputType="textPassword" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reg_tvname"
+            android:textSize="16sp"
+            android:text="@string/namereg" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <EditText
+            android:id="@+id/regedname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:background="@mipmap/edbg"
+            android:textColor="#7f4f21"
+            android:maxLength="12"
+            android:paddingLeft="20dp"
+            android:hint="請輸入姓名" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+        <TextView
+            android:id="@+id/reg_tvbirthtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/birthreg" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+        <TextView
+            android:id="@+id/regtvbirthval"
+            android:textSize="16sp"
+            android:background="@mipmap/edbg"
+            android:textColor="#7f4f21"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:text="1990 年 1 月 1 日"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/regbtnbirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="選擇日期" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/phonenumreg" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="請輸入電話號碼"
-                android:inputType="phone"
-                android:id="@+id/regedid"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/passwordreg" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="請輸入密碼"
-                android:id="@+id/regedpass"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/namereg" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="請輸入姓名"
-                android:id="@+id/regedname"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/birthreg" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/regtvbirth" />
+            <Button
+                android:id="@+id/btnreg"
+                android:layout_width="260dp"
+                android:layout_height="65dp"
+                android:background="@mipmap/btn_1_0733"
+                android:text="註冊"
+                android:textColor="#482d1a"
+                android:textSize="18sp" />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/regbtnbirth"
-                android:text="選擇日期"/>
+                android:id="@+id/btntestfb"
+                android:text="test" />
+
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sendreg"
-                android:id="@+id/btnreg"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="回到登入"
-                android:id="@+id/btnbacklogin"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal">
-        </LinearLayout>
+
+
     </LinearLayout>
-
 </RelativeLayout>

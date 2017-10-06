@@ -4,9 +4,45 @@
     android:id="@+id/activity_lobby"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg22"
     tools:context="com.example.dada.estimote.Lobby">
-    <include layout="@layout/toolbar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/logo1_152"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="140dp" />
+        <Button
+            android:id="@+id/lobby_btnlog"
+            android:layout_width="260dp"
+            android:layout_height="65dp"
+            android:textColor="#482d1a"
+            android:textSize="20sp"
+            android:background="@mipmap/btn_1_0733"
+            android:text="登錄" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+        <Button
+            android:id="@+id/lobby_btnreg"
+            android:layout_width="260dp"
+            android:layout_height="65dp"
+            android:textColor="#482d1a"
+            android:textSize="20sp"
+            android:background="@mipmap/btn_1_0733"
+            android:text="註冊新帳號" />
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>

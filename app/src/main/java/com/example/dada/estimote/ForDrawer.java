@@ -12,9 +12,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ public class ForDrawer extends AppCompatActivity {
 
     private DrawerLayout DL;
     private FrameLayout FL;
+    private ImageButton btnclose;
     protected NavigationView NV;
     protected Toolbar toolbar;
     private GlobalVariable globalVariable;
@@ -88,6 +92,14 @@ public class ForDrawer extends AppCompatActivity {
         setUpNavigation();
         globalVariable = (GlobalVariable)ForDrawer.this.getApplicationContext();
         settings = getSharedPreferences("Est", 0);
+        View hv = NV.getHeaderView(0);
+        btnclose = (ImageButton)hv.findViewById(R.id.ibclose);
+        btnclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DL.closeDrawer(Gravity.LEFT);
+            }
+        });
     }
 
     private void setUpNavigation() {
@@ -126,7 +138,7 @@ public class ForDrawer extends AppCompatActivity {
                             finish();
                             break;
                         case R.id.navigation_item_5:
-                            new AlertDialog.Builder(ForDrawer.this)
+                            new AlertDialog.Builder(ForDrawer.this,R.style.AlertDialogCustom)
                                     .setTitle("登出")
                                     .setMessage("你確定要登出嗎？")
                                     .setPositiveButton("是", new DialogInterface.OnClickListener()
@@ -140,7 +152,7 @@ public class ForDrawer extends AppCompatActivity {
                                             globalVariable.minor = -1;
                                             settings.edit().putString("id","").putString("name","").putString("birthday","").putString("once","-1").putInt("major",-1).putInt("minor",-1).commit();
                                             Intent intent5 = new Intent();
-                                            intent5.setClass(ForDrawer.this, Login.class);
+                                            intent5.setClass(ForDrawer.this, Lobby.class);
                                             startActivity(intent5);
                                             overridePendingTransition(0, 0);
                                             finish();

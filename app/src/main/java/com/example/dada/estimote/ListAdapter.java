@@ -102,7 +102,7 @@ public class ListAdapter extends BaseAdapter
         public void onClick(View v) {
             int vid=v.getId();
             if (vid == ib.getId()){
-                dialog   = new AlertDialog.Builder(mContext);
+                dialog   = new AlertDialog.Builder(mContext,R.style.AlertDialogCustom);
                 dialog.setTitle("藍芽");
                 dialog.setMessage("是否選擇配對");
 
@@ -114,9 +114,9 @@ public class ListAdapter extends BaseAdapter
                         globalVariable.minor = Integer.parseInt(tvminor.getText().toString());
                         Toast.makeText(mContext,"Get major: "+tvmajor.getText().toString() ,Toast.LENGTH_LONG).show();
                         settings.edit().putInt("major",globalVariable.major).putInt("minor",globalVariable.minor).commit();
-                        Intent intent = new Intent();
+                        /*Intent intent = new Intent();
                         intent.setClass(mContext, MainActivity.class);
-                        mContext.startActivity(intent);
+                        mContext.startActivity(intent);*/
                         ((Activity) mContext).finish();
 
                     }
